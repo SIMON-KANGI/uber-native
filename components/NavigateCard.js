@@ -5,6 +5,9 @@ import {MAPS_API_KEY} from "@env"
 import { useDispatch } from 'react-redux'
 import { setDestination,setOrigin } from '../slices/navSlice'
 import { useNavigation } from '@react-navigation/native'
+import NavFavourites from './NavFavourites'
+import { TouchableOpacity } from 'react-native'
+import { FontAwesome, FontAwesome6 } from '@expo/vector-icons';
 const NavigateCard = () => {
     const dispatch=useDispatch()
     const navigation= useNavigation()
@@ -37,6 +40,19 @@ const NavigateCard = () => {
           }}
     />
 </View>
+<NavFavourites/>
+      </View>
+      <View className="flex-row bg-white justify-evenly py-2 mt-auto border-t border-gray-100">
+        <TouchableOpacity
+        onPress={()=>navigation.navigate('RideOptionsCard')}
+         className="flex flex-row justify-between bg-black w-24 px-4 py-3 rounded-full">
+            <FontAwesome name="cab" size={24} color="white"/>
+            <Text className="text-white text-center">Rides</Text>
+        </TouchableOpacity>
+        <TouchableOpacity className="flex justify-between flex-row  w-24 px-4 py-3 rounded-full">
+            <FontAwesome6 name="plate-wheat" size={24} color="black"/>
+            <Text className="text-black text-center">Eats</Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   )
